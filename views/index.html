@@ -4,10 +4,48 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>NotApp</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+            rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
         <link rel="stylesheet" href="/stylesheets/style.css">
     </head>
-
     <body>
-            
+        <div class="container-fluid">
+            <div class="row g-0 align-items-center">
+                <!-- LADO IZQUIERDO -->
+                <div class="izquierda col-6 d-flex flex-column justify-content-center align-items-center text-center">
+                    <h1 class="display-1 m-5">¡Bienvenido a NotApp!</h1>
+                    <p class="m-4"><em>Tu aplicación de notas ya esta aquí, registrate y empieza a crear!</em></p>
+                    <img class="m-5 img-fluid" src="/img/logo.png" alt="Logo">
+                </div>
+                
+                <!-- LADO DERECHO -->
+                <div class="derecha col-6 d-flex flex-column justify-content-center align-items-center text-center">
+                    <div class="container-form col-2 rounded-3">
+                        <h2 class="text-white mt-5 display-5">Inicio</h2>
+                        <form action="">
+                            <div class="correo text-start mb-4 mx-5">
+                                <label for="email" class="form-label text-white">Correo:</label>
+                                <input class="form-control" type="email" name="correo" id="email" placeholder="Correo electrónico">
+                            </div>
+
+                            <div class="contra text-start mb-4 mx-5">
+                                <label for="password" class="form-label text-white"">Contraseña</label>
+                                <input class="form-control" type="password" name="contra" id="password" placeholder="Contraseña">
+                            </div>
+
+                            <button class="boton btn btn-light rounded-3">Ingresar</button>
+
+                            <hr class="linea mx-auto bg-black rounded-5">
+
+                            <p class="text-white mt-2">Si no estas registrado, hazlo aquí</p></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     </body>
 </html>

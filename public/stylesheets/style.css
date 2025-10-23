@@ -1,3 +1,23 @@
 body{
-  background-color: #da4901;
+  background-color: #c1bdbb;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  height: 100%;
 }
+
+.derecha, .izquierda{
+  height: 100vh;
+  
+}
+
+.container-form{
+  background-color: #2d2d2d;
+  width: 50%;
+  height: 50%;
+}
+
+.linea{
+  height: 5px;
+  width: 70%;
+  
+}
+
