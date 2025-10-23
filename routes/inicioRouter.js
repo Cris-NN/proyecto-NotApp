@@ -1,8 +1,10 @@
 import express from 'express';
-import {login} from '../controllers/inicioController.js';
+import {login, createUser, inicio} from '../controllers/usuarioController.js';
 
 const router = express.Router(); // inicializo una ruta
 
-router.get('/', login) 
+router.post('/createUser', createUser)
+router.post('/login', login)
+router.get('/', inicio)
 
 export default router;

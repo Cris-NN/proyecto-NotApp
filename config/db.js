@@ -1,18 +1,41 @@
-import pkg from 'npm install pg';
-const { Pool } = pkg;
+import pkg from 'pg';
 import dotenv from 'dotenv';
-dotenv.config();
+import path from 'path';
+const { Pool } = pkg;
+dotenv.config({ path: path.resolve('./bdd.env') });
 
-const pool = new Pool({
+const db = new Pool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
   port: process.env.DB_PORT,
+  ssl: { rejectUnauthorized: false }
 });
 
-pool.connect()
+db.connect()
   .then(() => console.log('Conectado a PostgreSQL'))
   .catch(err => console.error('Error de conexión:', err));
 
-export default pool;
+export default db;
+
+// DROP TABLE IF EXISTS users;
+// CREATE TABLE users (
+//     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+//     nombre VARCHAR(50) NOT NULL,
+//     apellido VARCHAR(50) NOT NULL,
+//     mail VARCHAR(100) UNIQUE NOT NULL,
+//     password VARCHAR(255) NOT NULL
+// );
+
+// DROP TABLE IF EXISTS notas;
+// CREATE TABLE notas (
+//     id VARCHAR(50) PRIMARY KEY,
+//     user_id VARCHAR(50) NOT NULL,
+//     titulo VARCHAR(50) NOT NULL,
+//     texto TEXT,
+//     CONSTRAINT fk_user
+//         FOREIGN KEY (user_id)
+//         REFERENCES users(id)
+//         ON DELETE CASCADE
+// );
