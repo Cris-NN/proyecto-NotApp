@@ -1,27 +1,10 @@
 import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import inicioRouter from './routes/inicioRouter.js';
+import cors from 'cors';
+import userRoutes from './routes/inicioRouter.js';
 
 const app = express();
-
-
-//////////////CONFIGURACIONES
-// Simular __dirname
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Middleware
+app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
-// Carpeta de archivos estáticos
-app.use(express.static(path.join(__dirname, 'public')));
-///////////////
-
-
-
-app.use('/', inicioRouter);
-
+app.use('/api/users', userRoutes);
 
 export default app;
