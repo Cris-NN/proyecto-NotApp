@@ -1,4 +1,4 @@
-import pkg from 'pg';
+import pkg from 'npm install pg';
 const { Pool } = pkg;
 import dotenv from 'dotenv';
 dotenv.config();
