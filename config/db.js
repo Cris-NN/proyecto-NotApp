@@ -19,6 +19,7 @@ db.connect()
 
 export default db;
 
+// DROP TABLE IF EXISTS notas;
 // DROP TABLE IF EXISTS users;
 // CREATE TABLE users (
 //     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -28,10 +29,9 @@ export default db;
 //     password VARCHAR(255) NOT NULL
 // );
 
-// DROP TABLE IF EXISTS notas;
 // CREATE TABLE notas (
-//     id VARCHAR(50) PRIMARY KEY,
-//     user_id VARCHAR(50) NOT NULL,
+//     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+//     user_id INT NOT NULL,
 //     titulo VARCHAR(50) NOT NULL,
 //     texto TEXT,
 //     CONSTRAINT fk_user
