@@ -1,120 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NotApp</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+            rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="/stylesheets/style.css">    
+    </head>
+    <body>
+        <!-- BARRA DE NAVEGACION -->
+        <nav class="navegacion navbar fixed-top">
+            <!-- BOTON HAMBURGUESA -->
+            <button class="btn-hambur btn btn-outline-dark mx-3 my-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NotApp</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
+            <!-- OFFCANVA IZQUIERDO -->
+            <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+                <div class="menu offcanvas-header">
+                    <div class="">
+                        <h5 class="offcanvas-title text-white" id="tituloOffCanva">NotApp</h5>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <!-- BOTON MENU -->
+                <div class="menu-cuerpo offcanvas-body d-flex flex-column justify-content-between">
+                    
+                    <!-- ARRIBA -->
+                    <div class="text-center">
+                        <button class="btn btn-outline-dark w-75 mb-3">Cuenta</button>
+                    </div>
 
-<body>
-    <div class="container-fluid">
-        <div class="row g-0 align-items-center">
-            <!-- LADO IZQUIERDO -->
-            <div class="izquierda col-6 d-flex flex-column justify-content-center align-items-center text-center">
-                <h1 class="display-1 m-5">¡Bienvenido a NotApp!</h1>
-                <p class="m-4"><em>Tu aplicación de notas ya esta aquí, registrate y empieza a crear!</em></p>
-                <img class="m-5 img-fluid" src="/img/logo.png" alt="Logo">
+                    <!-- CENTRO -->
+                    <div class="d-flex flex-column align-items-center justify-content-center flex-grow-1">
+                        <button class="btn btn-dark w-75 mb-3">Sobre nosotros</button>
+                        <button class="btn btn-dark w-75 mb-3">NotApp Premium</button>
+                        <button class="btn btn-dark w-75 mb-3">Configuración</button>
+                    </div>
+
+                    <!-- ABAJO -->
+                    <div >
+                        <button class="btn btn-dark w-100">Cerrar sesión</button>
+                    </div>
+                </div>
             </div>
 
-            <!-- LADO DERECHO -->
-            <div class="derecha col-6 d-flex flex-column justify-content-center align-items-center text-center">
-                <div id="CAMBIAR" class="container-form col-2 rounded-3">
-                    <div class="REGISTROOOOO">
-                        <h2 class="text-white mt-5 display-5">REGISTROO</h2>
-                        <form action="">
-                            <div class="correo text-start mb-4 mx-5">
-                                <label for="email" class="form-label text-white">Correo:</label>
-                                <input class="form-control" type="email" name="correo" id="email"
-                                    placeholder="Correo electrónico">
+            <span class="display-6 text-white">NotApp</span>
+
+            <img class="img-fluid mx-3" src="/img/logo.png" alt="Logo" style="max-width: 50px;">
+        </nav>
+
+        <!-- CONTENEDOR CON LAS NOTAS CREADAS -->
+        <div id="contentNotas" class="container-fluid">
+            <!-- NOTAS A CREAR POR EL USUARIO -->
+        </div>
+
+        <!-- BOTON CREAR NUEVA NOTA -->
+        <img class="agregar img-fluid rounded float-end mx-2" src="/img/btnagregar.png" alt="Boton agregar" data-bs-toggle="modal" data-bs-target="#modalNuevo">
+
+        <!-- CREAR NOTA -->
+        <div class="modal fade" id="modalNuevo" tabindex="-1" aria-labelledby="modalNuevoLabel" aria-hidden="true" data-bs-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-black">
+                        <h5 class="modal-title text-white" id="modalNuevoLabel">Nueva nota</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="cuerpo-nota modal-body">
+                        <form id="formNota">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="tituloNota" placeholder="Título...">
                             </div>
-
-                            <div class="contra text-start mb-4 mx-5">
-                                <label for="password" class="form-label text-white"">Contraseña</label>
-                                <input class=" form-control" type="password" name="contra" id="password"
-                                    placeholder="Contraseña">
+                            <div class="mb-3">
+                                <textarea class="form-control" id="textoNota" rows="4" placeholder="Nota..."></textarea>
                             </div>
-
-                            <button class="boton btn btn-light rounded-3">Ingresar</button>
-
-                            <hr class="linea mx-auto bg-black rounded-5">
-
-                            <p class="text-white mt-2">Si no estas registrado, hazlo aquí</p>
-                            </p>
                         </form>
                     </div>
-                    <div class="logeooooo">
-                        <h2 class="text-white mt-5 display-5">Inicio</h2>
-                        <form action="">
-                            <div class="correo text-start mb-4 mx-5">
-                                <label for="email" class="form-label text-white">Correo:</label>
-                                <input class="form-control" type="email" name="correo" id="email"
-                                    placeholder="Correo electrónico">
-                            </div>
-                            <div class="correo text-start mb-4 mx-5">
-                                <label for="email" class="form-label text-white">Correo:</label>
-                                <input class="form-control" type="email" name="correo" id="email"
-                                    placeholder="Correo electrónico">
-                            </div>
-                            <div class="correo text-start mb-4 mx-5">
-                                <label for="email" class="form-label text-white">Correo:</label>
-                                <input class="form-control" type="email" name="correo" id="email"
-                                    placeholder="Correo electrónico">
-                            </div>
-                            <div class="correo text-start mb-4 mx-5">
-                                <label for="email" class="form-label text-white">Correo:</label>
-                                <input class="form-control" type="email" name="correo" id="email"
-                                    placeholder="Correo electrónico">
-                            </div>
-                            <div class="correo text-start mb-4 mx-5">
-                                <label for="email" class="form-label text-white">Correo:</label>
-                                <input class="form-control" type="email" name="correo" id="email"
-                                    placeholder="Correo electrónico">
-                            </div>
-                            <div class="correo text-start mb-4 mx-5">
-                                <label for="email" class="form-label text-white">Correo:</label>
-                                <input class="form-control" type="email" name="correo" id="email"
-                                    placeholder="Correo electrónico">
-                            </div>
-                            <div class="correo text-start mb-4 mx-5">
-                                <label for="email" class="form-label text-white">Correo:</label>
-                                <input class="form-control" type="email" name="correo" id="email"
-                                    placeholder="Correo electrónico">
-                            </div>
-                            <div class="correo text-start mb-4 mx-5">
-                                <label for="email" class="form-label text-white">Correo:</label>
-                                <input class="form-control" type="email" name="correo" id="email"
-                                    placeholder="Correo electrónico">
-                            </div>
-                            
-
-                            <div class="contra text-start mb-4 mx-5">
-                                <label for="password" class="form-label text-white"">Contraseña</label>
-                                <input class=" form-control" type="password" name="contra" id="password"
-                                    placeholder="Contraseña">
-                            </div>
-
-                            <button class="boton btn btn-light rounded-3">Ingresar</button>
-
-                            <hr class="linea mx-auto bg-black rounded-5">
-
-                            <p class="text-white mt-2">Si no estas registrado, hazlo aquí</p>
-                            </p>
-                        </form>
+                    <div class="pie-nota modal-footer">
+                        <button id="cancelar" type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancelar</button>
+                        <button id="guardar" type="button" class="btn btn-dark" onclick="guardar()">Guardar nota</button>
                     </div>
-
                 </div>
             </div>
         </div>
-    </div>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-</body>
-
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <script src="/javascript/principal.js"></script>
+    </body>
 </html>
