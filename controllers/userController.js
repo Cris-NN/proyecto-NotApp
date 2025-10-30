@@ -5,10 +5,10 @@ import User from '../models/userModel.js';
 const __filename = fileURLToPath(import.meta.url); // devuelve la URL acutal, y la funcion lo transforma a una ruta real de archivo
 const __dirname = path.dirname(__filename); // se obtiene solamente el directorio donde esta el archivo
 
-export const inicio = (req, res) => {
-  res.sendFile(path.join(__dirname, '../views/index.html')) // conecto con el view
-  //res.render()
-}
+// export const inicio = (req, res) => {
+//   res.sendFile(path.join(__dirname, '../views/inicio.html')) // conecto con el view
+//   //res.render()
+// }
 
 export const login = async (req, res) => {
   try {
@@ -53,6 +53,17 @@ export const authMiddleware = async (req, res, next) => {
 
   const user = await User.verifyToken(token);
   if (!user) return res.status(401).json({ error: "Token inválido" });
+
+  req.user = user;
+  next();
+};
+
+export const authFrontMiddleware = async (req, res, next) => {
+  const token = req.headers.authorization?.split(" ")[1];
+  if (!token) return res.redirect('/')
+
+  const user = await User.verifyToken(token);
+  if (!user) return res.redirect('/')
 
   req.user = user;
   next();

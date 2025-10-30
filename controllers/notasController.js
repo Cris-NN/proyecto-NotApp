@@ -5,6 +5,10 @@ import Nota from '../models/notaModel.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+export const home = (req, res) => {
+  res.sendFile(path.join(__dirname, '../views/home.html')) 
+}
+
 export const createNota = async (req, res) => {
   try {
     const { titulo, texto } = req.body;
