@@ -7,10 +7,11 @@
     <title>NotApp</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheets/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
-<body>
+<body onload="cargarNotasDocu()">
     <!-- BARRA DE NAVEGACION -->
     <nav class="navegacion navbar fixed-top">
         <!-- BOTON HAMBURGUESA -->
@@ -26,15 +27,14 @@
                 <div class="">
                     <h5 class="offcanvas-title text-white" id="tituloOffCanva">NotApp</h5>
                 </div>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-                    aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <!-- BOTON MENU -->
             <div class="menu-cuerpo offcanvas-body d-flex flex-column justify-content-between">
 
                 <!-- ARRIBA -->
                 <div class="text-center">
-                    <button class="btn btn-outline-dark w-75 mb-3">Cuenta</button>
+                    <button class="btn btn-dark w-75 mb-3">Cuenta</button>
                 </div>
 
                 <!-- CENTRO -->
@@ -46,7 +46,7 @@
 
                 <!-- ABAJO -->
                 <div>
-                    <button class="btn btn-dark w-100">Cerrar sesión</button>
+                    <button id="cerrarSesion" class="btn btn-dark w-100">Cerrar sesión</button>
                 </div>
             </div>
         </div>
@@ -60,26 +60,9 @@
     <div id="contenedor" class="container-fluid my-4 pt-5">
         <h2 class="display-6 m-4">Mis notas</h2>
         <div id="notasCreadas" class="row g-3 mx-5 my-4">
-            <!-- <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 shadow-sm border-0 bg-light">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-primary">Título de la nota</h5>
-                        <p class="card-text flex-grow-1">Contenido de la nota...</p>
-                        <button class="btn btn-outline-danger mt-3 align-self-end">Eliminar</button>
-                    </div>
-                </div>
-            </div> -->
-            <!-- <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 shadow-sm border-0 bg-light">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-primary">Título de la nota</h5>
-                        <p class="card-text flex-grow-1">Contenido de la nota...</p>
-                        <button class="btn btn-outline-danger mt-3 align-self-end">Eliminar</button>
-                    </div>
-                </div>
-            </div> -->
+           
+            <!-- NOTAS A CREAR POR EL USUARIO -->
         </div>
-        <!-- NOTAS A CREAR POR EL USUARIO -->
     </div>
 
     <!-- BOTON CREAR NUEVA NOTA -->
@@ -93,8 +76,7 @@
             <div class="modal-content">
                 <div class="modal-header bg-black">
                     <h5 class="modal-title text-white" id="modalNuevoLabel">Nueva nota</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Cerrar"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
                 <div class="cuerpo-nota modal-body">
                     <form id="formNota">
@@ -113,11 +95,37 @@
             </div>
         </div>
     </div>
+    
+    <div class="modal fade" id="modalModificar" tabindex="-1" aria-labelledby="modalNuevoLabel" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-black">
+                    <h5 class="modal-title text-white" id="modalNuevoLabel">Editar nota</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="cuerpo-nota modal-body">
+                    <form id="formNota">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="tituloNotaModificar" placeholder="Título...">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" id="textoNotaModificar" rows="4" placeholder="Nota..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="pie-nota modal-footer">
+                    <button id="cancelar" type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="guardarEdicion" type="button" class="btn btn-dark">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
-    <script src="/javascript/principal.js"></script>
+    <script src="/javascript/home.js"></script>
 </body>
 
 </html>

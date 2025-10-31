@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename); // se obtiene solamente el directori
 const router = express.Router();
 // router.use(authMiddleware);
 
-router.get('/home/'/*,authFrontMiddleware*/, (req, res) => {
+router.get('/home/',authFrontMiddleware, (req, res) => {
   res.sendFile(path.join(__dirname, '../views/home.html'))
 } )
 

@@ -4,6 +4,7 @@ import cors from 'cors';
 import userRoutes from './routes/userRouter.js';
 import notaRouter from './routes/notaRouter.js';
 import inicioRouter from './routes/frontRouter.js';
+import cookieParser from 'cookie-parser';
 
 
 const app = express();
@@ -16,6 +17,7 @@ expressOasGenerator.init(app, {
 
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.static('public'))
 app.use('/', inicioRouter);
 app.use('/user', userRoutes);

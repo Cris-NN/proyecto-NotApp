@@ -17,15 +17,21 @@ export const login = async (req, res) => {
 
     if (!result) return res.status(401).json({ message: "Correo o contraseña incorrectos" });
 
+    res.cookie("token", result.token, {
+      httpOnly: true,
+      secure: false,
+      sameSite: "lax"
+    });
+
     res.status(200).json({
       user: {
         id: result.user.id,
         nombre: result.user.nombre,
         apellido: result.user.apellido,
         mail: result.user.mail
-      },
-      token: result.token
+      }
     });
+
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -48,7 +54,7 @@ export const createUser = async (req, res) => {
 };
 
 export const authMiddleware = async (req, res, next) => {
-  const token = req.headers.authorization?.split(" ")[1];
+  const token = req.cookies?.token;
   if (!token) return res.status(401).json({ error: "No autorizado" });
 
   const user = await User.verifyToken(token);
@@ -59,7 +65,7 @@ export const authMiddleware = async (req, res, next) => {
 };
 
 export const authFrontMiddleware = async (req, res, next) => {
-  const token = req.headers.authorization?.split(" ")[1];
+  const token = req.cookies?.token;
   if (!token) return res.redirect('/')
 
   const user = await User.verifyToken(token);
