@@ -53,6 +53,15 @@ export const createUser = async (req, res) => {
   }
 };
 
+export const logout = async (req, res) => {
+    res.clearCookie("token", {
+        httpOnly: true,
+        secure: true,
+        sameSite: "strict"
+    });
+    res.status(200).json({ msg: "Sesión cerrada" });
+}
+
 export const authMiddleware = async (req, res, next) => {
   const token = req.cookies?.token;
   if (!token) return res.status(401).json({ error: "No autorizado" });
